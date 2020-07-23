@@ -35,139 +35,148 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-    class SetValues {
-
-        // member
-        private var isSet: Boolean = false
-
-        // member function
-        fun setTrue() {
-            isSet = true
-        }
-
-        // member function
-        fun setFlase() {
-            isSet = false
-        }
-
-        fun displayStatus(value: String) {
-            if (isSet == true)
-                println("$value set is true.")
-            else
-                println("$value set is false.")
-        }
-    }
+//    class SetValues {
+//
+//        // member
+//        private var isSet: Boolean = false
+//
+//        // member function
+//        fun setTrue() {
+//            isSet = true
+//        }
+//
+//        // member function
+//        fun setFlase() {
+//            isSet = false
+//        }
+//
+//        fun displayStatus(value: String) {
+//            if (isSet == true)
+//                println("$value set is true.")
+//            else
+//                println("$value set is false.")
+//        }
+//    }
 
     fun main(args: Array<String>) {
 
-        // object creation for class
-        val obj1 = SetValues() // create obj1 object of SetValues class
-        val obj2 = SetValues() // create obj2 object of SetValues class
-
-        obj1.setTrue()
-        obj2.setFlase()
-
-        obj1.displayStatus("obj1")
-        obj2.displayStatus("obj2")
-
-        // object for inheritance class
-        val t1 = MathTeacher(25, "Jack")
-        t1.teachMaths()
+        //Array in kotlin
+        val array1 = arrayOf(1,2,3,4)
+        val array2 = arrayOf<Long>(11,12,13,14)
+        array1.set(0,5)
+        array1[2] = 6
+        array2.set(2,10)
+        array2[3] = 8
+        for(element in array1){
+            println(element)
+        }
         println()
-        val f1 = Footballer(29, "Christiano")
-        f1.playFootball()
-
-        //Overriding Member Function using inheritance
-        val newPerson = NewPerson()
-        newPerson.displayAge(31)
-        newPerson.yearPassout = 2020
-        println("year of passout change ${newPerson.yearPassout}.")
-
-        //Polymorhism fun object
-        val a : Number = 99
-        val b = 1
-        val c = 3.1
-
-        //Using compile time polymorphism
-        printNumber(a)
-        printNumber(b)
-        printNumber(c)
-
-        //Using runtime polymorphism
-        println("Summing all numbers")
-        println(sum(listOf(a, b, c)))
-    }
-    }
-
-    // inheritance code snippet
-    //person base class
-    open class Person(age: Int, name: String) {
-        init {
-            println("My name is $name.")
-            println("My age is $age")
+        for(element in array2){
+            println(element)
         }
-    }
-    //class MathTeacher inherited from Person class
-    class MathTeacher(age: Int, name: String): Person(age, name) {
 
-        fun teachMaths() {
-            println("I teach in primary school.")
+        val arraySample1 = arrayOf(7,8,9,0)
+        val arraySample2 = arrayOf<Long>(21,22,23,24)
+        println(arraySample1.get(0))
+        println(arraySample1[2])
+        println()
+        println(arraySample2.get(2))
+        println(arraySample2[3])
+
+        //String use
+        val str = "Hello"
+        println(str[0])
+        println(str[1])
+        println(str[str.length-1])
+
+        //String templates
+        val i =10
+        print("i = $i")// print i=10  as string
+
+        //Escaped String can contain escape characters like '\n', '\t', '\b' ,'\r','\$'etc. using ""
+        val escStr = "Vijaya"
+
+        //Raw String written """-"""
+        val text = """Kotlin is the official language  
+                      announce by Google for  
+                      Android application development
+                      """
+        println(text)
+
+        //Structural equality of string
+        val string1 = "Hello, World!"
+        val string2 = "Hello, World!"
+        println(string1==string2) //true
+        println(string1!=string2) //false
+
+        //Different ways to define Array
+        val arrayOfNumbers = arrayOf(2, 3, 5, 6, 10)
+        println(arrayOfNumbers)
+        val firstValue = arrayOfNumbers[0] // Resolves to 2
+        println(firstValue)
+        arrayOfNumbers[0] = 100 // the first element of the array is now `100`
+        val newFirstValue  = arrayOfNumbers[0]
+        println(newFirstValue)
+        //iterate through the elements of the array
+        arrayOfNumbers.forEach { number -> println(number) }
+        //Or this
+        for (number in arrayOfNumbers) {
+            println(number)
         }
+
+        val someOtherArray = Array(5) { "" } //define empty array of size 5
+        println(someOtherArray)
+
+        //Lists in Kotlin
+        //Immutable Lists
+        val listContant = listOf(2, 3, 5, 6, 7)
+        println(listContant)
+
+       // list[2] = 100 // immutable list cant be modified
+
+        //Mutable Lists
+        val list = mutableListOf(2, 3, 5, 6, 7)
+        list[2] = 100 // works now
+        println(list[2]) // 100
+        list.add(index = 3, element = 500)
+        println(list[3]) // 500
+        list.remove(7)
+        println(list) // [2, 3, 100, 500, 6]
+        list.removeAt(0)
+        println(list) // [3, 100, 500, 6]
+        list.add(80)
+        println(list)
+
+        //Sets (add unique elements no duplicates)
+        val workers = mutableSetOf(
+            Worker(id = 5, name = "Filip"),
+            Worker(id = 3, name = "Mike"),
+            Worker(id = 5, name = "Filip"),
+            Worker(id = 4, name = "Filip")
+        )
+        println(workers) // [Worker(id=5, name=Filip), Worker(id=3, name=Mike), Worker(id=4, name=Filip)]
+        val removedWorker = Worker(id = 5, name = "Filip")
+        workers.remove(removedWorker)
+        println(workers) // [Worker(id=3, name=Mike), Worker(id=4, name=Filip)]
+
+        //Creating a Map (similar to dictionar, key:value pair)
+        val httpHeaders = mutableMapOf(
+            "Authorization" to "your-api-key",
+            "ContentType" to "application/json",
+            "UserLocale" to "US")
+             httpHeaders["Authorization"] = "something else"
+             println(httpHeaders["Authorization"]) // something else
+             httpHeaders.put("Hello", "World") //add new key :value pair
+        //or
+             httpHeaders["HelloWorld"] = "HelloWorld" ////add new key :value pair
+             println(httpHeaders)
+
+
     }
-    //class Footballer inherited from Person class
-    class Footballer(age: Int, name: String): Person(age, name) {
-        fun playFootball() {
-            println("I play for LA Galaxy.")
-        }
-    }
-
-    //Overriding Member and Member Functions
-    // Empty primary constructor
-    open class PersonNew() {
-        open var yearPassout: Int = 0
-            get() = field
-
-            set(value) {
-                field = value
-            }
-        open fun displayAge(age: Int) {
-            println("My age is $age.")
-        }
-    }
-
-    class NewPerson: PersonNew() {
-        override var yearPassout: Int = 0
-            get() = field
-
-            set(value) {
-                field = value - 5
-            }
-        // calling function of base class
-       // super.displayAge(age)
-
-        override fun displayAge(age: Int) {
-            println("My new age is ${age - 5}.")
-        }
-    }
-    // compile time Polymorphism
-    fun printNumber(n : Number){
-        println("Using printNumber(n : Number)")
-        println(n.toString() + "\n")
-    }
-
-    fun printNumber(n : Int){
-         println("Using printNumber(n : Int)")
-         println(n.toString() + "\n")
-    }
-
-    fun printNumber(n : Double){
-         println("Using printNumber(n : Double)")
-         println(n.toString() + "\n")
-    }
-
-    //run time polymorphism
-    fun sum(numbers : List<Number>) : Number {
-         return numbers.sumByDouble { it.toDouble() }
+    data class Worker(
+        val id: Int,
+        val name: String
+    )
     }
 
 
