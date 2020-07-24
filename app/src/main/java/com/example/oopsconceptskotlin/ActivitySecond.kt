@@ -8,5 +8,7 @@ class ActivitySecond : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
+        print("in second activity")
     }
+
 }
