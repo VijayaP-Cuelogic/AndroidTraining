@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         var model = ViewModelProviders.of(this).get(vieModelProvider.javaClass)
 
         var randomNumber = model.getNumber()
-        textView.text = randomNumber.toString()
+        textView.text = "Number : "+ randomNumber.toString()
         print(tag + "random number set")
     }
 }
