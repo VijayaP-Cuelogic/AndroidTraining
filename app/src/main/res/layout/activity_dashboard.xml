@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="306dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="80dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/my_devices"
+        android:textColor="@color/textColorWhite"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="310dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimary"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/all_devices"
+        android:textColor="@color/textColorWhite" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="310dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/register_complain"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/textColorWhite"
+        />
+</LinearLayout>
