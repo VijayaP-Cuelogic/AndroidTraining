@@ -1,15 +1,16 @@
 package com.example.cuelogicinventoryassignment
 
 import android.os.Bundle
-import android.support.wearable.activity.WearableActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 
-class ActivityAllDeviceListView : WearableActivity() {
+class ActivityAllDeviceListView : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_devices_listview)
-
-        // Enables Always-on
-        setAmbientEnabled()
     }
+
 }

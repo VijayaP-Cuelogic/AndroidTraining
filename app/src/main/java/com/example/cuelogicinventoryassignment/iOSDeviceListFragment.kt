@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_ios_device_list.*
 class iOSDeviceListFragment : Fragment() {
 
 //    val context: Context
-//        @JvmName("MainActivity")
+//        @JvmName("getContext2")
 //        get() = getContext()!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,15 +30,14 @@ class iOSDeviceListFragment : Fragment() {
 
 
       //  var listView : ListView = findViewById<ListView>(R.id.iOSDeviceList)
-       // iOSDeviceList
 //        var list = mutableListOf<Model>()
 //        list.add(Model("iPhone X","description", R.drawable.ic_launcher_foreground))
 //        list.add(Model("iPhone 8","description", R.drawable.ic_launcher_foreground))
 //        list.add(Model("iPhone 7","description", R.drawable.ic_launcher_foreground))
 //        list.add(Model("iPhone 6","description", R.drawable.ic_launcher_foreground))
 //
-//        iOSDeviceList?.adapter = MyAdapter(context, R.layout.row, list)
-//      //  var ListView : ListView = clearFindViewByIdCache(R.id.li)
+//        iOSDeviceList.adapter = MyAdapter(this, R.layout.row, list)
+      //  var ListView : ListView = clearFindViewByIdCache(R.id.li)
     }
 
     override fun onCreateView(
@@ -46,8 +45,20 @@ class iOSDeviceListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ios_device_list, container, false)
+//        val layoutInflater:LayoutInflater = LayoutInflater.from(R.layout.fragment_ios_device_list, container, false)
+//        val  view:View = layoutInflater.inflate(resources, null)
+        val view = inflater.inflate(R.layout.fragment_ios_device_list, container, false);
+        var listView  = view.findViewById<ListView>(R.id.iOSDeviceList)
+        var list = mutableListOf<Model>()
+        list.add(Model("iPhone X","description", R.drawable.ic_launcher_foreground))
+        list.add(Model("iPhone 8","description", R.drawable.ic_launcher_foreground))
+        list.add(Model("iPhone 7","description", R.drawable.ic_launcher_foreground))
+        list.add(Model("iPhone 6","description", R.drawable.ic_launcher_foreground))
+
+        listView.adapter = MyAdapter(view.context, R.layout.row, list)
+        return view
     }
+
 
     companion object {
         /**

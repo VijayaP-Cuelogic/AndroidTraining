@@ -18,4 +18,6 @@
     <string name="hello_world">Hello Square World!</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
     <string name="title_activity_employee_device_list">EmployeeDeviceListActivity</string>
+    <string name="title_activity_all_device_list">AllDeviceListActivity</string>
+    <string name="title_activity_all_device_list_view">ActivityAllDeviceListView</string>
 </resources>

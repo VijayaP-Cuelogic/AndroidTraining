@@ -12,6 +12,7 @@ class MyAdapter(var mCtx:Context, var resources:Int, var items:List<Model>):Arra
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater:LayoutInflater = LayoutInflater.from(mCtx)
         val  view:View = layoutInflater.inflate(resources, null)
+
         val imageView:ImageView = view.findViewById(R.id.imageV)
         val title:TextView = view.findViewById(R.id.textName)
         val description:TextView = view.findViewById(R.id.textDescriptin)
