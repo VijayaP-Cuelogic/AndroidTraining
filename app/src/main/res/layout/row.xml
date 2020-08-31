@@ -5,8 +5,8 @@
     android:padding="16dp">
 
     <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="@dimen/imageView_width"
+        android:layout_height="@dimen/imageView_height"
         android:id="@+id/imageV"
         android:src="@mipmap/ic_launcher"/>
 
@@ -21,18 +21,18 @@
             android:id="@+id/textName"
             android:text="My device"
             android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_margin="5dp"
-            android:textColor="#000"/>
+            android:textSize="@dimen/Devic_Name_text"
+            android:layout_margin="@dimen/inner_frame_layout_padding"
+            android:textColor="@color/textColorBlack"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textDescriptin"
             android:text="Device description"
-            android:textSize="18sp"
-            android:layout_margin="5dp"
-            android:textColor="#000"/>
+            android:textSize="@dimen/description_text"
+            android:layout_margin="@dimen/inner_frame_layout_padding"
+            android:textColor="@color/textColorBlack"/>
 
     </LinearLayout>
 

@@ -15,28 +15,28 @@
         android:layout_marginTop="130dp"
         android:text="LOGIN AS"
         android:textColor="@color/colorPrimary"
-        android:textSize="20sp" />
+        android:textSize="@dimen/subtitle_textsize" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="229dp"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/margin_Top"
         android:background="@color/colorPrimary"
         android:text="Admin"
         android:textColor="@color/textColorWhite"
-        android:textSize="18sp" />
+        android:textSize="@dimen/button_title_textsize" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="229dp"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/margin_Top"
         android:background="@color/colorPrimary"
         android:text="Employee"
         android:textColor="@color/textColorWhite"
-        android:textSize="18sp" />
+        android:textSize="@dimen/button_title_textsize" />
 
 </LinearLayout>

@@ -6,9 +6,9 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="306dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/Top_Spacing"
         android:background="@color/colorPrimary"
         android:text="@string/my_devices"
         android:textColor="@color/textColorWhite"
@@ -17,9 +17,9 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="310dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/margin_Top"
         android:background="@color/colorPrimary"
         android:layout_gravity="center_horizontal"
         android:text="@string/all_devices"
@@ -27,9 +27,9 @@
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="310dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/margin_Top"
         android:background="@color/colorPrimary"
         android:text="@string/register_complain"
         android:layout_gravity="center_horizontal"

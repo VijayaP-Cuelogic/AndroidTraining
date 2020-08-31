@@ -13,7 +13,7 @@ internal lateinit var listView: ListView
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_all_devices_listview)
+        setContentView(R.layout.activity_add_new_device)
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(AndroidDeviceListFragment(), "Android")

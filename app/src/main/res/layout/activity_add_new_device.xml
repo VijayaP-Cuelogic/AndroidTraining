@@ -1,25 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_grey"
-    android:padding="@dimen/box_inset_layout_padding"
-    tools:context=".AddNewDeviceActivity"
-    tools:deviceIds="wear">
+    android:orientation="vertical">
 
-    <FrameLayout
+    <TextView
+        android:id="@+id/titleDeviceDetails"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/inner_frame_layout_padding"
-        app:boxedEdges="all">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_Top_Title"
+        android:text="ADD NEW DEVICE"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/subtitle_textsize" />
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hello_world" />
+    <EditText
+        android:id="@+id/deviceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_Top"
+        android:paddingLeft="@dimen/padding_left"
+        android:paddingRight="@dimen/padding_right"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Device Name" />
 
-    </FrameLayout>
-</androidx.wear.widget.BoxInsetLayout>
+    <EditText
+        android:id="@+id/EditTextPlatform"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_Top"
+        android:paddingRight="@dimen/padding_right"
+        android:paddingLeft="@dimen/padding_left"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Platform" />
+
+    <EditText
+        android:id="@+id/OSInstalled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="@dimen/margin_Top"
+        android:paddingLeft="@dimen/padding_left"
+        android:paddingRight="@dimen/padding_right"
+        android:inputType="textPersonName"
+        android:text="OS Installed" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_Top"
+        android:paddingEnd="@dimen/padding_right"
+        android:paddingStart="@dimen/padding_left"
+        android:ems="10"
+        android:text="Enter Date"/>
+
+    <Button
+        android:id="@+id/buttonAddDevice"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_Top"
+        android:background="@color/colorPrimary"
+        android:text="Add"
+        android:textSize="@dimen/button_title_textsize"
+        android:textColor="@color/textColorWhite" />
+</LinearLayout>

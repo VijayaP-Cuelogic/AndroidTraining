@@ -10,19 +10,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/margin_Top_Title"
         android:text="CUELOGIC SIGN UP"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp" />
+        android:textSize="@dimen/subtitle_textsize" />
 
     <EditText
         android:id="@+id/editTextCueId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="20dp"
+        android:layout_marginTop="@dimen/margin_Top"
+        android:paddingLeft="@dimen/padding_left"
+        android:paddingRight="@dimen/padding_right"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Cue ID" />
@@ -31,9 +31,9 @@
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingRight="20dp"
-        android:paddingLeft="10dp"
+        android:layout_marginTop="@dimen/margin_Top"
+        android:paddingRight="@dimen/padding_right"
+        android:paddingLeft="@dimen/padding_left"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name" />
@@ -43,9 +43,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="20dp"
+        android:layout_marginTop="@dimen/margin_Top"
+        android:paddingLeft="@dimen/padding_left"
+        android:paddingRight="@dimen/padding_right"
         android:inputType="textPersonName"
         android:text="Email id" />
 
@@ -53,9 +53,9 @@
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingEnd="20dp"
-        android:paddingStart="10dp"
+        android:layout_marginTop="@dimen/margin_Top"
+        android:paddingEnd="@dimen/padding_right"
+        android:paddingStart="@dimen/padding_left"
         android:ems="10"
         android:inputType="textPassword"
         android:text="@string/password"
@@ -63,12 +63,13 @@
 
     <Button
         android:id="@+id/button6"
-        android:layout_width="250dp"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/margin_Top"
         android:background="@color/colorPrimary"
         android:text="@string/signup"
+        android:textSize="@dimen/button_title_textsize"
         android:textColor="@color/textColorWhite" />
 
     <TextView
@@ -84,11 +85,12 @@
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="250dp"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@color/colorPrimary"
         android:text="@string/sign_in"
-        android:textColor="@color/textColorWhite" />
+        android:textColor="@color/textColorWhite"
+        android:textSize="@dimen/button_title_textsize" />
 
 </LinearLayout>

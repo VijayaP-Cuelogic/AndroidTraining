@@ -15,8 +15,26 @@
         android:theme="@style/AppTheme">
 
         <activity
+            android:name=".ActivityDeviceDetails"
+            android:label="@string/title_activity_device_details">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AddNewDeviceActivity"
+            android:label="@string/title_activity_add_new_device">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ActivityAllDeviceListView"
-            android:label="@string/title_activity_all_device_list_view"></activity>
+            android:label="@string/title_activity_all_device_list_view" />
         <activity
             android:name=".EmployeeDeviceListActivity"
             android:label="@string/title_activity_employee_device_list" />

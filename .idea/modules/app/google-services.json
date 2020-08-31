@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "173549119483",
+    "firebase_url": "https://cuelogicinventory.firebaseio.com",
+    "project_id": "cuelogicinventory",
+    "storage_bucket": "cuelogicinventory.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173549119483:android:e539558cc5482affae0d5e",
+        "android_client_info": {
+          "package_name": "com.example.cuelogicinventoryassignment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173549119483-ag08ubjs3les0t2ss14neolmfj1o82i2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cuelogicinventoryassignment",
+            "certificate_hash": "aa0dfb718303c291df797dbd7ee01a0ca71f05d8"
+          }
+        },
+        {
+          "client_id": "173549119483-11cfpolhosda360om9cdiq3nsjkervhb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDopY4ZXVfI6KYhFp0GYRQbzLqsjTWsk1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173549119483-11cfpolhosda360om9cdiq3nsjkervhb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
