@@ -62,7 +62,7 @@
         android:autofillHints="" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/buttonSignUp"
         android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -84,7 +84,7 @@
         android:textSize="18sp" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/btnSignIn"
         android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
