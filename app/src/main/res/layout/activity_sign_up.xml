@@ -25,7 +25,7 @@
         android:paddingRight="@dimen/padding_right"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Cue ID" />
+        android:hint="Cue ID" />
 
     <EditText
         android:id="@+id/editTextName"
@@ -36,7 +36,7 @@
         android:paddingLeft="@dimen/padding_left"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Name" />
 
     <EditText
         android:id="@+id/editTextEmailid"
@@ -47,7 +47,7 @@
         android:paddingLeft="@dimen/padding_left"
         android:paddingRight="@dimen/padding_right"
         android:inputType="textPersonName"
-        android:text="Email id" />
+        android:hint="Email id" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -58,7 +58,7 @@
         android:paddingStart="@dimen/padding_left"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="@string/password"
+        android:hint="@string/password"
         android:autofillHints="" />
 
     <Button

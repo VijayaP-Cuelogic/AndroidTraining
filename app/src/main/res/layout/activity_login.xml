@@ -23,7 +23,7 @@
         android:paddingRight="@dimen/padding_right"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Enter Email ID" />
+        android:hint="Enter Email ID" />
 
     <EditText
         android:id="@+id/editTextEnterPassword"
@@ -33,8 +33,8 @@
         android:paddingRight="@dimen/padding_right"
         android:paddingLeft="@dimen/padding_left"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Password" />
+        android:inputType="textPassword"
+        android:hint="Password" />
 
     <Button
         android:id="@+id/forgotPassword"
@@ -55,6 +55,7 @@
         android:layout_gravity="center_horizontal"
         android:background="@color/colorPrimary"
         android:text="Sign In"
+        android:textSize="@dimen/button_title_textsize"
         android:textColor="@color/textColorWhite" />
 
     <TextView
@@ -75,6 +76,7 @@
         android:layout_gravity="center_horizontal"
         android:background="@color/colorPrimary"
         android:text="Sign Up"
+        android:textSize="@dimen/button_title_textsize"
         android:textColor="@color/textColorWhite" />
 
 

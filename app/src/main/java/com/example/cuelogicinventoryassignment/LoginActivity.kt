@@ -51,13 +51,17 @@ class LoginActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
         updateUI(currentUser)
     }
-    fun updateUI(currentUser : FirebaseUser?)
+    private fun updateUI(currentUser : FirebaseUser?)
     {
         if (currentUser != null){
-
+            startActivity(Intent(this, DashboardActivity::class.java))
+            finish()
+        }else{
+            Toast.makeText(baseContext, "Login failed.",
+                Toast.LENGTH_SHORT).show()
         }
     }
-    fun validateUser(){
+     private fun validateUser(){
         if (editTextEmail.text.toString().isEmpty()){
             editTextEmail.error = "Please enter email"
             editTextEmail.requestFocus()
