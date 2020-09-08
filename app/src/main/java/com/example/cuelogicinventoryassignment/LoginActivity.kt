@@ -54,8 +54,14 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUI(currentUser : FirebaseUser?)
     {
         if (currentUser != null){
-            startActivity(Intent(this, DashboardActivity::class.java))
-            finish()
+            if (currentUser.isEmailVerified) {
+                startActivity(Intent(this, DashboardActivity::class.java))
+                finish()
+            }else
+            {
+                Toast.makeText(baseContext, "Please verify your email address.",
+                    Toast.LENGTH_SHORT).show()
+            }
         }else{
             Toast.makeText(baseContext, "Login failed.",
                 Toast.LENGTH_SHORT).show()

@@ -8,7 +8,7 @@
     <dimen name="margin_Top">20dp</dimen>
     <dimen name="Top_Spacing">80dp</dimen>
     <dimen name="button_width">306dp</dimen>
-    <dimen name="button_height">70dp</dimen>
+    <dimen name="button_height">60dp</dimen>
     <dimen name="subtitle_textsize">25sp</dimen>
     <dimen name="margin_Top_Title">40dp</dimen>
     <dimen name="button_title_textsize">18sp</dimen>

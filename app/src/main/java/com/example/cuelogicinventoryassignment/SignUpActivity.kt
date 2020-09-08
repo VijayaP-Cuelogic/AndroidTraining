@@ -49,11 +49,18 @@ class SignUpActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(editTextEmailid.text.toString(), editTextPassword.text.toString())
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-               startActivity(Intent(this, DashboardActivity::class.java))
-                    finish()
+                    val user = FirebaseAuth.getInstance().currentUser
+                    user!!.sendEmailVerification()
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                print("Email sent.")
+                                startActivity(Intent(this, LoginActivity::class.java))
+                                finish()
+                            }
+                        }
                 } else {
                     // If sign in fails, display a message to the user.
-                    makeText(baseContext, "Authentication failed.", LENGTH_SHORT).show()
+                    makeText(baseContext, "Sign Up failed.Please try again later!", LENGTH_SHORT).show()
                 }
             }
     }

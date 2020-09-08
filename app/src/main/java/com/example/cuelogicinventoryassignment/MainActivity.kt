@@ -22,6 +22,7 @@ internal lateinit var listView: ListView
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -45,6 +46,14 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
+        auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+        if (currentUser != null){
+            setContentView(R.layout.activity_dashboard)
+        }else {
+            setContentView(R.layout.activity_main)
+        }
+
     }
 
 }
