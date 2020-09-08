@@ -18,7 +18,7 @@
         android:textSize="@dimen/subtitle_textsize" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonAdmin"
         android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -29,7 +29,7 @@
         android:textSize="@dimen/button_title_textsize" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonEmployee"
         android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
