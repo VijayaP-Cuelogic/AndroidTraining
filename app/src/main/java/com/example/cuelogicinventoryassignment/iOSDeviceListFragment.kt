@@ -7,7 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import android.widget.Toast
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.dialog_forgot_password.*
 import kotlinx.android.synthetic.main.fragment_ios_device_list.*
 
 /**
@@ -17,65 +21,83 @@ import kotlinx.android.synthetic.main.fragment_ios_device_list.*
  */
 class iOSDeviceListFragment : Fragment() {
 
-//    val context: Context
-//        @JvmName("getContext2")
-//        get() = getContext()!!
+    lateinit var deviceList: MutableList<Device>
+    lateinit var ref : DatabaseReference
+    lateinit var listView: ListView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-
-        }
-
-        // List View Object
-
-
-      //  var listView : ListView = findViewById<ListView>(R.id.iOSDeviceList)
-//        var list = mutableListOf<Model>()
-//        list.add(Model("iPhone X","description", R.drawable.ic_launcher_foreground))
-//        list.add(Model("iPhone 8","description", R.drawable.ic_launcher_foreground))
-//        list.add(Model("iPhone 7","description", R.drawable.ic_launcher_foreground))
-//        list.add(Model("iPhone 6","description", R.drawable.ic_launcher_foreground))
+//            deviceList = mutableListOf()
+//            ref = FirebaseDatabase.getInstance().getReference("device")
+//            ref.addValueEventListener(object : ValueEventListener {
+//                override fun onCancelled(p0: DatabaseError) {
+//                    TODO("Not yet implemented")
+//                }
 //
-//        iOSDeviceList.adapter = MyAdapter(this, R.layout.row, list)
-      //  var ListView : ListView = clearFindViewByIdCache(R.id.li)
+//                override fun onDataChange(p0: DataSnapshot) {
+//                    if (p0.exists()){
+//                        for (d in p0.children){
+//                            val device = d.getValue(Device::class.java)!!
+//                            deviceList.add(device)
+//                        }
+//                    }
+//                }
+//            })
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-//        val layoutInflater:LayoutInflater = LayoutInflater.from(R.layout.fragment_ios_device_list, container, false)
-//        val  view:View = layoutInflater.inflate(resources, null)
+
+        deviceList = mutableListOf()
+        ref = FirebaseDatabase.getInstance().getReference("device/iOS")
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0.exists()){
+                    for (d in p0.children){
+                        val device = d.getValue(Device::class.java)!!
+                        deviceList.add(device)
+                    }
+                }
+            }
+        })
         val view = inflater.inflate(R.layout.fragment_ios_device_list, container, false);
-        var listView  = view.findViewById<ListView>(R.id.iOSDeviceList)
+        listView  = view.findViewById<ListView>(R.id.iOSDeviceList)
         var list = mutableListOf<Model>()
+
         list.add(Model("iPhone X","description", R.drawable.ic_launcher_foreground))
         list.add(Model("iPhone 8","description", R.drawable.ic_launcher_foreground))
         list.add(Model("iPhone 7","description", R.drawable.ic_launcher_foreground))
         list.add(Model("iPhone 6","description", R.drawable.ic_launcher_foreground))
-
-        listView.adapter = MyAdapter(view.context, R.layout.row, list)
+        list.add(Model("iPhone 6 +","description", R.drawable.ic_launcher_foreground))
+        
+        listView.adapter = MyAdapter(view.context, R.layout.row, deviceList)
         return view
     }
 
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment iOSDeviceListFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            iOSDeviceListFragment().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
-    }
+//    companion object {
+//        /**
+//         * Use this factory method to create a new instance of
+//         * this fragment using the provided parameters.
+//         *
+//         * @param param1 Parameter 1.
+//         * @param param2 Parameter 2.
+//         * @return A new instance of fragment iOSDeviceListFragment.
+//         */
+//        // TODO: Rename and change types and number of parameters
+//        @JvmStatic
+//        fun newInstance(param1: String, param2: String) =
+//            iOSDeviceListFragment().apply {
+//                arguments = Bundle().apply {
+//
+//                }
+//            }
+//    }
 }

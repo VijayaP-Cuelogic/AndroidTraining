@@ -24,7 +24,7 @@
         android:paddingRight="@dimen/padding_right"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Device Name" />
+        android:hint="Device Name" />
 
     <EditText
         android:id="@+id/EditTextPlatform"
@@ -35,7 +35,7 @@
         android:paddingLeft="@dimen/padding_left"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Platform" />
+        android:hint="Platform" />
 
     <EditText
         android:id="@+id/OSInstalled"
@@ -46,7 +46,7 @@
         android:paddingLeft="@dimen/padding_left"
         android:paddingRight="@dimen/padding_right"
         android:inputType="textPersonName"
-        android:text="OS Installed" />
+        android:hint="OS Installed" />
 
     <EditText
         android:id="@+id/editTextDate"
@@ -56,7 +56,7 @@
         android:paddingEnd="@dimen/padding_right"
         android:paddingStart="@dimen/padding_left"
         android:ems="10"
-        android:text="Enter Date"/>
+        android:hint="Enter Date"/>
 
     <Button
         android:id="@+id/buttonAddDevice"

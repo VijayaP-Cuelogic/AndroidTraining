@@ -35,5 +35,16 @@
             android:textColor="@color/textColorBlack"/>
 
     </LinearLayout>
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="horizontal">-->
+<!--        <ImageView-->
+<!--            android:layout_width="@dimen/imageView_width"-->
+<!--            android:layout_height="@dimen/imageView_height"-->
+<!--            android:id="@+id/imageVDiscloser"-->
+<!--            android:src="@mipmap/ic_launcher"-->
+<!--            android:layout_gravity="end"/>-->
+<!--    </LinearLayout>-->
 
 </LinearLayout>
