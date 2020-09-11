@@ -20,6 +20,7 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
+        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 

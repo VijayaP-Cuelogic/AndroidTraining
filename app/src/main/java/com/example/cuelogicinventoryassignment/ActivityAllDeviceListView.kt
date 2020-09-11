@@ -13,6 +13,8 @@ class ActivityAllDeviceListView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_devices_listview)
 
+        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
+
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(AndroidDeviceListFragment(), "Android")
         adapter.addFragment(iOSDeviceListFragment(), "iOS")

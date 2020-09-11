@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
@@ -50,8 +51,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
+      //  val currentUser = auth.currentUser
+       // updateUI(currentUser)
     }
     private fun updateUI(currentUser : FirebaseUser?)
     {

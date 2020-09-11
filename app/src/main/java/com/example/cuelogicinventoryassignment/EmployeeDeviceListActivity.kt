@@ -11,6 +11,8 @@ class EmployeeDeviceListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_employee_device_list)
 
+          getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
+
           val adapter = ViewPagerAdapter(supportFragmentManager)
           adapter.addFragment(AndroidDeviceListFragment(), "Android")
           adapter.addFragment(iOSDeviceListFragment(), "iOS")

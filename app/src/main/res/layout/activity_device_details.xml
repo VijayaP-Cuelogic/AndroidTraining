@@ -83,17 +83,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_Top">
 
-        <Button
-            android:id="@+id/buttonUpdate"
-            android:layout_width="@dimen/buttonUpdate_remove"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="@dimen/padding_left"
-            android:layout_marginTop="@dimen/margin_Top"
-            android:background="@color/colorPrimary"
-            android:text="Update"
-            android:textColor="@color/textColorWhite"
-            android:textSize="@dimen/button_title_textsize" />
+<!--        <Button-->
+<!--            android:id="@+id/buttonUpdate"-->
+<!--            android:layout_width="@dimen/buttonUpdate_remove"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginLeft="@dimen/padding_left"-->
+<!--            android:layout_marginTop="@dimen/margin_Top"-->
+<!--            android:background="@color/colorPrimary"-->
+<!--            android:text="Update"-->
+<!--            android:textColor="@color/textColorWhite"-->
+<!--            android:textSize="@dimen/button_title_textsize" />-->
 
         <Button
             android:id="@+id/buttonRemove"

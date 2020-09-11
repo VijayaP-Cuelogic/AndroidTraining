@@ -48,15 +48,30 @@
         android:inputType="textPersonName"
         android:hint="OS Installed" />
 
-    <EditText
-        android:id="@+id/editTextDate"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_Top"
-        android:paddingEnd="@dimen/padding_right"
-        android:paddingStart="@dimen/padding_left"
-        android:ems="10"
-        android:hint="Enter Date"/>
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_Top"
+            android:paddingEnd="@dimen/padding_right"
+            android:paddingStart="@dimen/padding_left"
+            android:ems="10"
+            android:hint="Enter Date"/>
+         <Button
+             android:id="@+id/buttonSelectDate"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textAllCaps="false"
+             android:layout_marginTop="16dp"
+             android:paddingEnd="@dimen/padding_right"
+             android:paddingStart="@dimen/padding_left"
+             android:text="Select Date" />
+    </LinearLayout>>
 
     <Button
         android:id="@+id/buttonAddDevice"
