@@ -21,7 +21,7 @@
             android:textStyle="bold"
             android:text="Employee Dashboard"/>
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnMyDevice"
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
         android:layout_marginTop="40dp"
@@ -33,7 +33,7 @@
         />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnAllDevice"
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
         android:layout_marginTop="@dimen/margin_Top"
@@ -44,12 +44,12 @@
         android:textColor="@color/textColorWhite" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btnRegisterComplain"
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
         android:layout_marginTop="@dimen/margin_Top"
         android:background="@color/colorPrimary"
-        android:text="@string/register_complain"
+        android:text="Add New Device"
         android:textSize="@dimen/button_title_textsize"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/textColorWhite"

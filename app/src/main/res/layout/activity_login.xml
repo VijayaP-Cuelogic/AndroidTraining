@@ -40,7 +40,7 @@
             android:hint="Password" />
 
         <Button
-            android:id="@+id/forgotPassword"
+            android:id="@+id/buttonforgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

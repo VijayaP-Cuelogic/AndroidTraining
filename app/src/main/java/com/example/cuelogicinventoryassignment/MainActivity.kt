@@ -27,32 +27,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val adapter = ViewPagerAdapter(supportFragmentManager)
-//        adapter.addFragment(AndroidDeviceListFragment(), "Android")
-//        adapter.addFragment(iOSDeviceListFragment(), "iOS")
-//        viewPager.adapter = adapter
-//        tabs.setupWithViewPager(viewPager)
-
         buttonEmployee.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
 
         buttonAdmin.setOnClickListener {
+            startActivity(Intent(this,LoginActivity::class.java))
+            finish()
+        }
+        // Check if user is signed in (non-null) and update UI accordingly.
+        auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+        if (currentUser != null){
+            startActivity(Intent(this,DashboardActivity::class.java))
+            finish()
         }
 
     }
 
     override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        auth = FirebaseAuth.getInstance()
-        val currentUser = auth.currentUser
-        if (currentUser != null){
-            setContentView(R.layout.activity_dashboard)
-        }else {
-            setContentView(R.layout.activity_main)
-        }
 
     }
 

@@ -1,77 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-
-    <TextView
-        android:id="@+id/textView2"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_Top_Title"
-        android:text="CUELOGIC SIGN UP"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/subtitle_textsize" />
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_Top_Title"
+            android:text="CUELOGIC SIGN UP"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/subtitle_textsize" />
 
-    <EditText
-        android:id="@+id/editTextCueId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_Top"
-        android:paddingLeft="@dimen/padding_left"
-        android:paddingRight="@dimen/padding_right"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Cue ID" />
+        <EditText
+            android:id="@+id/editTextCueId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_Top"
+            android:paddingLeft="@dimen/padding_left"
+            android:paddingRight="@dimen/padding_right"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Cue ID" />
 
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_Top"
-        android:paddingRight="@dimen/padding_right"
-        android:paddingLeft="@dimen/padding_left"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Name" />
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_Top"
+            android:paddingRight="@dimen/padding_right"
+            android:paddingLeft="@dimen/padding_left"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Name" />
 
-    <EditText
-        android:id="@+id/editTextEmailid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginTop="@dimen/margin_Top"
-        android:paddingLeft="@dimen/padding_left"
-        android:paddingRight="@dimen/padding_right"
-        android:inputType="textPersonName"
-        android:hint="Email id" />
+        <EditText
+            android:id="@+id/editTextEmailid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_marginTop="@dimen/margin_Top"
+            android:paddingLeft="@dimen/padding_left"
+            android:paddingRight="@dimen/padding_right"
+            android:inputType="textPersonName"
+            android:hint="Email id" />
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_Top"
-        android:paddingEnd="@dimen/padding_right"
-        android:paddingStart="@dimen/padding_left"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="@string/password"
-        android:autofillHints="" />
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_Top"
+            android:paddingEnd="@dimen/padding_right"
+            android:paddingStart="@dimen/padding_left"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="@string/password"
+            android:autofillHints="" />
 
-    <Button
-        android:id="@+id/buttonSignUp"
-        android:layout_width="@dimen/button_width"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_Top"
-        android:background="@color/colorPrimary"
-        android:text="@string/signup"
-        android:textSize="@dimen/button_title_textsize"
-        android:textColor="@color/textColorWhite" />
-
+        <Button
+            android:id="@+id/buttonSignUp"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_Top"
+            android:background="@color/colorPrimary"
+            android:text="@string/signup"
+            android:textSize="@dimen/button_title_textsize"
+            android:textColor="@color/textColorWhite" />
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_centerHorizontal="true"
+    android:layout_marginBottom="20dp"
+    android:gravity="bottom">
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
@@ -92,5 +101,6 @@
         android:text="@string/sign_in"
         android:textColor="@color/textColorWhite"
         android:textSize="@dimen/button_title_textsize" />
-
 </LinearLayout>
+
+</RelativeLayout>
