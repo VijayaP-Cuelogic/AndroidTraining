@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             editor.apply()
             editor.commit()
             startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+          //  finish()
         }
 
         buttonAdmin.setOnClickListener {
@@ -53,14 +53,14 @@ class MainActivity : AppCompatActivity() {
             editor.apply()
             editor.commit()
             startActivity(Intent(this,LoginActivity::class.java))
-            finish()
+            //finish()
         }
         // Check if user is signed in (non-null) and update UI accordingly.
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
         if (currentUser != null){
             startActivity(Intent(this,DashboardActivity::class.java))
-            finish()
+          //  finish()
         }
 
     }

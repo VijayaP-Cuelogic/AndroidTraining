@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothClass
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_add_new_device.*
@@ -71,9 +72,18 @@ class AddNewDeviceActivity : AppCompatActivity() {
             ref.child(deviceId!!).setValue(device).addOnCompleteListener {
 
                 startActivity(Intent(this, DashboardActivity::class.java))
-                finish()
+               // finish()
             }
 
         }
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

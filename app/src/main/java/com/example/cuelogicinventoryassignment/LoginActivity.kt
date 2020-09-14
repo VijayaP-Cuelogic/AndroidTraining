@@ -9,12 +9,15 @@ import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_device_details.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
@@ -22,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
 
     private val sharedPrefFile = "kotlinsharedpreference"
     private lateinit var auth: FirebaseAuth
+    lateinit var ref : DatabaseReference
     private val TAG = SignUpActivity::class.qualifiedName
     private lateinit var user_type: String
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
 
         btnSignUp.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
-            finish()
+           // finish()
         }
         buttonforgotPassword.setOnClickListener{
 
@@ -60,6 +64,7 @@ class LoginActivity : AppCompatActivity() {
     }
     private fun updateUI(currentUser : FirebaseUser?)
     {
+        getUserDetails(currentUser)
         if (currentUser != null){
             if (currentUser.isEmailVerified) {
                 if (user_type.equals("admin")) {
@@ -78,6 +83,28 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(baseContext, "Login failed.",
                 Toast.LENGTH_SHORT).show()
         }
+    }
+    fun getUserDetails(currentUser : FirebaseUser?){
+        var userID = currentUser?.uid.toString()
+        ref = FirebaseDatabase.getInstance().getReference("users/employee/"+userID)
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+
+                if (p0.exists()) {
+                    //   for (d in p0.children){
+                    val name = p0.child("name").getValue().toString()
+                    val sharedPreference =  getSharedPreferences("kotlinsharedpreference",Context.MODE_PRIVATE)
+                    var editor = sharedPreference.edit()
+                    editor.putString("user_name",name)
+                    editor.commit()
+
+                }
+            }
+        })
     }
      fun forgotPassword(userName: EditText?){
          val user = userName!!.text.toString()
@@ -126,6 +153,7 @@ class LoginActivity : AppCompatActivity() {
                      // Sign in success, update UI with the signed-in user's information
                      Log.d(TAG, "signInWithEmail:success")
                      val user = auth.currentUser
+                     getUserDetails(user)
                      updateUI(user)
                  } else {
                      // If sign in fails, display a message to the user.
@@ -138,5 +166,14 @@ class LoginActivity : AppCompatActivity() {
                  // ...
              }
 
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

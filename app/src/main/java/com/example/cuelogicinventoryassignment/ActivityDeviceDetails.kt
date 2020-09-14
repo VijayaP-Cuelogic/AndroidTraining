@@ -3,6 +3,7 @@ package com.example.cuelogicinventoryassignment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
@@ -49,5 +50,14 @@ class ActivityDeviceDetails : AppCompatActivity() {
 
             }
         }
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

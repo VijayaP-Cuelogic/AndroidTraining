@@ -11,37 +11,36 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ActivityCheckIn_CheckOut"
             android:label="@string/title_activity_device_details"
-            android:parentActivityName=".ActivityAllDeviceListView"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ActivityDeviceDetails"
             android:label="@string/title_activity_device_details"
-            android:parentActivityName=".ActivityAllDeviceListView"
+
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".AddNewDeviceActivity"
             android:label="@string/title_activity_add_new_device"
-            android:parentActivityName=".DashboardActivity"
+
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ActivitySendEmail"
             android:label="Cuelogic Inventory"
-            android:parentActivityName=".DashboardActivity"
+
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ActivityAllDeviceListView"
             android:label="@string/title_activity_all_device_list_view"
-            android:parentActivityName=".DashboardActivity"
+
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".EmployeeDeviceListActivity"
             android:label="@string/title_activity_employee_device_list"
-            android:parentActivityName=".DashboardActivity"
+
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
@@ -51,13 +50,11 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".SignUpActivity"
-            android:parentActivityName=".LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity

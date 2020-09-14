@@ -1,7 +1,7 @@
 package com.example.cuelogicinventoryassignment
 
 import android.os.Bundle
-import android.widget.ListView
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_employee_device_list.*
 
@@ -19,8 +19,13 @@ class EmployeeDeviceListActivity : AppCompatActivity() {
           viewPager.adapter = adapter
           tabs.setupWithViewPager(viewPager)
     }
-//    override fun onSupportNavigateUp(): Boolean {
-//        onBackPressed()
-//      //  return true
-//    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

@@ -52,14 +52,10 @@ class iOSDeviceListFragment : Fragment() {
 
         layout = view.findViewById(R.id.layout)
         // Add ProgressBar to our layout
-        layout?.addView(progressBar)
+      //  layout?.addView(progressBar)
         var list = mutableListOf<Model>()
+        //View.VISIBLE
 
-        //val visibility = if (progressBar.visibility == View.GONE){
-            View.VISIBLE
-       // }else
-            View.GONE
-       // progressBar.visibility = visibility
         deviceList = mutableListOf<Device>()
         ref = FirebaseDatabase.getInstance().getReference("device/iOS")
         ref.addValueEventListener(object : ValueEventListener {
@@ -78,6 +74,7 @@ class iOSDeviceListFragment : Fragment() {
 
                 val adapter = MyAdapter(view.context, R.layout.row, deviceList)
                 listView.adapter = adapter
+               // layout?.removeAllViews()
                 listView.setOnItemClickListener { parent, view, position, id ->
                     val element = adapter.getItem(position)
                     val intent = Intent (activity, ActivityCheckIn_CheckOut::class.java)
@@ -88,7 +85,6 @@ class iOSDeviceListFragment : Fragment() {
             }
         })
 
-       // View.GONE
         return view
 
     }

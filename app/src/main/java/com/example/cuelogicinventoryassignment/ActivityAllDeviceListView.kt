@@ -2,6 +2,7 @@ package com.example.cuelogicinventoryassignment
 
 import android.content.Context
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
@@ -28,4 +29,13 @@ class ActivityAllDeviceListView : AppCompatActivity() {
         tabs.setupWithViewPager(viewPager)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

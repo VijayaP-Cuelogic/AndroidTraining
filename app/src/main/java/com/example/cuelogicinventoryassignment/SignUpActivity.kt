@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import android.view.MenuItem
 import android.widget.Toast
 import android.widget.Toast.*
 import com.google.firebase.auth.FirebaseAuth
@@ -29,7 +30,7 @@ class SignUpActivity : AppCompatActivity() {
         }
         btnSignIn.setOnClickListener{
             startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+           // finish()
         }
     }
     private fun signUpUser(){
@@ -78,7 +79,7 @@ class SignUpActivity : AppCompatActivity() {
                                 }
                                 Log.d(TAG, "createUserWithEmail:success")
                                 startActivity(Intent(this, LoginActivity::class.java))
-                                finish()
+                               // finish()
                             }
                         }
                 } else {
@@ -87,5 +88,14 @@ class SignUpActivity : AppCompatActivity() {
                     makeText(baseContext, "Sign Up failed.Please try again later!", LENGTH_SHORT).show()
                 }
             }
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

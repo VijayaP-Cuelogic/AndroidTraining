@@ -3,6 +3,7 @@ package com.example.cuelogicinventoryassignment
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_login.*
@@ -24,7 +25,20 @@ class ActivitySendEmail : AppCompatActivity() {
         editTextMessage = findViewById(R.id.editTextMessage)
         buttonSend = findViewById(R.id.buttonSend)
         buttonSend.setOnClickListener {
-            getData()
+            if (editTextMail.text.toString().isEmpty()){
+                editTextMail.error = "Please enter email"
+                editTextMail.requestFocus()
+                return@setOnClickListener
+            }
+            if (editTextSubject.text.toString().isEmpty()){
+                editTextSubject.error = "Please enter subject"
+                editTextSubject.requestFocus()
+                return@setOnClickListener
+            }
+            email = editTextMail.text.toString()
+            subject = editTextSubject.text.toString()
+            message = editTextMessage.text.toString()
+
             val intent = Intent(Intent.ACTION_SEND)
             intent.putExtra(Intent.EXTRA_EMAIL, email)
             intent.putExtra(Intent.EXTRA_SUBJECT, subject)
@@ -33,19 +47,14 @@ class ActivitySendEmail : AppCompatActivity() {
             startActivity(Intent.createChooser(intent, "Select email"))
         }
     }
-    private fun getData() {
-        if (editTextMail.text.toString().isEmpty()){
-            editTextMail.error = "Please enter email"
-            editTextMail.requestFocus()
-            return
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
         }
-        if (editTextSubject.text.toString().isEmpty()){
-            editTextSubject.error = "Please enter subject"
-            editTextSubject.requestFocus()
-            return
-        }
-        email = editTextMail.text.toString()
-        subject = editTextSubject.text.toString()
-        message = editTextMessage.text.toString()
+        return super.onOptionsItemSelected(item)
     }
+
 }
