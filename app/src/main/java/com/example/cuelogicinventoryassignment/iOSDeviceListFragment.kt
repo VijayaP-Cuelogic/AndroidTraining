@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
-import android.widget.Toast
+import android.widget.*
+import androidx.core.view.isVisible
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
@@ -25,6 +25,7 @@ class iOSDeviceListFragment : Fragment() {
     lateinit var deviceList: MutableList<Device>
     lateinit var ref : DatabaseReference
     lateinit var listView: ListView
+    lateinit var layout:RelativeLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -38,6 +39,27 @@ class iOSDeviceListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val progressBar = ProgressBar(this.context)
+        //setting height and width of progressBar
+        progressBar.layoutParams = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+
+
+        val view = inflater.inflate(R.layout.fragment_ios_device_list, container, false);
+        listView  = view.findViewById<ListView>(R.id.iOSDeviceList)
+
+        layout = view.findViewById(R.id.layout)
+        // Add ProgressBar to our layout
+        layout?.addView(progressBar)
+        var list = mutableListOf<Model>()
+
+        //val visibility = if (progressBar.visibility == View.GONE){
+            View.VISIBLE
+       // }else
+            View.GONE
+       // progressBar.visibility = visibility
         deviceList = mutableListOf<Device>()
         ref = FirebaseDatabase.getInstance().getReference("device/iOS")
         ref.addValueEventListener(object : ValueEventListener {
@@ -49,29 +71,26 @@ class iOSDeviceListFragment : Fragment() {
                 if (p0.exists()){
                     for (d in p0.children){
                         val device = d.getValue(Device::class.java)!!
+                        device.deviceKey = d.key.toString()
                         deviceList.add(device)
                     }
                 }
+
+                val adapter = MyAdapter(view.context, R.layout.row, deviceList)
+                listView.adapter = adapter
+                listView.setOnItemClickListener { parent, view, position, id ->
+                    val element = adapter.getItem(position)
+                    val intent = Intent (activity, ActivityCheckIn_CheckOut::class.java)
+                    intent.putExtra("key", element!!.deviceKey.toString())
+                    intent.putExtra("platform", "iOS")
+                    startActivity(intent)
+                }
             }
         })
-        val view = inflater.inflate(R.layout.fragment_ios_device_list, container, false);
-        listView  = view.findViewById<ListView>(R.id.iOSDeviceList)
-        var list = mutableListOf<Model>()
 
-        list.add(Model("iPhone X","description", R.drawable.ic_launcher_foreground))
-        list.add(Model("iPhone 8","description", R.drawable.ic_launcher_foreground))
-        list.add(Model("iPhone 7","description", R.drawable.ic_launcher_foreground))
-        list.add(Model("iPhone 6","description", R.drawable.ic_launcher_foreground))
-        list.add(Model("iPhone 6 +","description", R.drawable.ic_launcher_foreground))
-
-        val adapter = MyAdapter(view.context, R.layout.row, list)
-        listView.adapter = adapter
+       // View.GONE
         return view
-        listView.setOnClickListener{
-            val intent = Intent(this.activity, ActivityDeviceDetails::class.java)
-            startActivity(intent)
-            //  finish()
-        }
+
     }
 
 

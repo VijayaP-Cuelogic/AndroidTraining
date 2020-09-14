@@ -35,12 +35,12 @@ class SignUpActivity : AppCompatActivity() {
     private fun signUpUser(){
 
         if (editTextCueId.text.toString().isEmpty()){
-            editTextCueId.error = "Please enter email"
+            editTextCueId.error = "Please enter Cue Id"
             editTextCueId.requestFocus()
             return
         }
         if (editTextName.text.toString().isEmpty()){
-            editTextName.error = "Please enter email"
+            editTextName.error = "Please enter Name"
             editTextName.requestFocus()
             return
         }

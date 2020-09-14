@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TextView
 
-class MyAdapter(var mCtx:Context, var resources:Int, var items:List<Model>):ArrayAdapter<Model>(mCtx,resources, items){
+class MyAdapter(var mCtx:Context, var resources:Int, var items:List<Device>):ArrayAdapter<Device>(mCtx,resources, items){
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
             val layoutInflater:LayoutInflater = LayoutInflater.from(mCtx)
             val  view:View = layoutInflater.inflate(resources, null)
@@ -17,10 +17,10 @@ class MyAdapter(var mCtx:Context, var resources:Int, var items:List<Model>):Arra
             val title:TextView = view.findViewById(R.id.textName)
             val description:TextView = view.findViewById(R.id.textDescriptin)
 
-        var mItem: Model = items[position]
-        imageView.setImageDrawable(mCtx.resources.getDrawable(R.drawable.ic_launcher_foreground))
-        title.text = mItem.title
-        description.text = mItem.description
+        var mItem: Device = items[position]
+       // imageView.setImageDrawable(mCtx.resources.getDrawable(R.drawable.ic_launcher_foreground))
+        title.text = mItem.deviceName
+        description.text = mItem.date
         return view
     }
 }

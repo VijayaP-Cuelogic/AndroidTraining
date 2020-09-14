@@ -10,5 +10,10 @@
     <style name="SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/background_splashscreen</item>
     </style>
+    <style name="CustomTheme" parent="Theme.AppCompat.Light">
+
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetEnd">0dp</item>
+    </style>
 
 </resources>

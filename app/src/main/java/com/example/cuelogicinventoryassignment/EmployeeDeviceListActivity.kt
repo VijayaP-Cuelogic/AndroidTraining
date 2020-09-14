@@ -19,4 +19,8 @@ class EmployeeDeviceListActivity : AppCompatActivity() {
           viewPager.adapter = adapter
           tabs.setupWithViewPager(viewPager)
     }
+//    override fun onSupportNavigateUp(): Boolean {
+//        onBackPressed()
+//      //  return true
+//    }
 }

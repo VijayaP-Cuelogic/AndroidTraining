@@ -1,5 +1,6 @@
 package com.example.cuelogicinventoryassignment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,32 +25,41 @@ class AndroidDeviceListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_android_device_list, container, false);
+        listView  = view.findViewById<ListView>(R.id.androidDeviceList)
+
         deviceList = mutableListOf<Device>()
         ref = FirebaseDatabase.getInstance().getReference("device/Android")
         ref.addValueEventListener(object : ValueEventListener {
+
             override fun onCancelled(p0: DatabaseError) {
                 TODO("Not yet implemented")
             }
 
             override fun onDataChange(p0: DataSnapshot) {
+            //    deviceList = mutableListOf<Device>()
                 if (p0.exists()){
+
                     for (d in p0.children){
                         val device = d.getValue(Device::class.java)!!
+                        device.deviceKey = d.key.toString()
                         deviceList.add(device)
                         println(deviceList)
                     }
                 }
+                val adapter = MyAdapter(view.context, R.layout.row, deviceList)
+                listView.adapter = adapter
+                listView.setOnItemClickListener { parent, view, position, id ->
+                    val element = adapter.getItem(position)
+                    val intent = Intent (activity, ActivityCheckIn_CheckOut::class.java)
+                    intent.putExtra("key", element!!.deviceKey)
+                    intent.putExtra("platform", "Android")
+                    startActivity(intent)
+                }
             }
         })
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_android_device_list, container, false);
-        listView  = view.findViewById<ListView>(R.id.androidDeviceList)
-        var list = mutableListOf<Model>()
-        list.add(Model("Android AP","description", R.drawable.ic_launcher_foreground))
-        list.add(Model("Pixel","description", R.drawable.ic_launcher_foreground))
-        list.add(Model("Redmi 8","description", R.drawable.ic_launcher_foreground))
-
-        listView.adapter = MyAdapter(view.context, R.layout.row, list)
         return view
     }
 

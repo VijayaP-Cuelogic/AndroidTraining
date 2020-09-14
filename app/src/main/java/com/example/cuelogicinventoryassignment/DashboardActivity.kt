@@ -22,7 +22,7 @@ class DashboardActivity : AppCompatActivity() {
             finish()
         }
         btnRegisterComplain.setOnClickListener{
-            startActivity(Intent(this, AddNewDeviceActivity::class.java))
+            startActivity(Intent(this, ActivitySendEmail::class.java))
             finish()
         }
     }

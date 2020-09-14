@@ -1,5 +1,6 @@
 package com.example.cuelogicinventoryassignment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentPagerAdapter
@@ -9,11 +10,16 @@ import kotlinx.android.synthetic.main.activity_employee_device_list.*
 
 class ActivityAllDeviceListView : AppCompatActivity() {
 
+    private lateinit var user_type: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_devices_listview)
 
-        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
+        val sharedPreference =  getSharedPreferences("kotlinsharedpreference", Context.MODE_PRIVATE)
+        user_type = sharedPreference.getString("user_type","").toString()
+        if (user_type.equals("employee")) {
+            getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
+        }
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(AndroidDeviceListFragment(), "Android")

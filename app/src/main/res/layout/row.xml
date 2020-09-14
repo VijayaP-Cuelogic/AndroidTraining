@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="10dp">
 
     <ImageView
         android:layout_width="@dimen/imageView_width"
         android:layout_height="@dimen/imageView_height"
         android:id="@+id/imageV"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/device_icon" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -35,16 +35,20 @@
             android:textColor="@color/textColorBlack"/>
 
     </LinearLayout>
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="horizontal">-->
-<!--        <ImageView-->
-<!--            android:layout_width="@dimen/imageView_width"-->
-<!--            android:layout_height="@dimen/imageView_height"-->
-<!--            android:id="@+id/imageVDiscloser"-->
-<!--            android:src="@mipmap/ic_launcher"-->
-<!--            android:layout_gravity="end"/>-->
-<!--    </LinearLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:padding="10dp"
+        android:paddingEnd="@dimen/inner_frame_layout_padding">
+        <ImageView
+            android:layout_width="@dimen/imageNext_width"
+            android:layout_height="@dimen/imageNext_height"
+            android:id="@+id/imageVDiscloser"
+            android:src="@drawable/next_arrow"
+            android:foregroundGravity="center_vertical"
+            android:layout_gravity="end"/>
+    </LinearLayout>
 
 </LinearLayout>
