@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cuelogicinventoryassignment">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/app_iconnew"
@@ -9,7 +12,9 @@
         android:roundIcon="@mipmap/app_iconnew_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityUpdateDevice"></activity>
+        <activity android:name=".ActivityUpdateDevice"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".ActivityCheckIn_CheckOut"
             android:label="@string/title_activity_device_details"

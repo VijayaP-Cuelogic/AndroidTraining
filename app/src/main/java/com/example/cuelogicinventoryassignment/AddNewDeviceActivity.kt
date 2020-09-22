@@ -4,7 +4,12 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.ProgressDialog
 import android.bluetooth.BluetoothClass
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -13,6 +18,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_add_new_device.*
@@ -87,39 +93,52 @@ class AddNewDeviceActivity : AppCompatActivity() {
         }
         buttonAddDevice.setOnClickListener {
 
-            if (deviceName.text.toString().isEmpty()) {
-                deviceName.error = "Please enter device name"
-                deviceName.requestFocus()
-                return@setOnClickListener
-            }
-            if (platformSelected.isEmpty() || platformSelected.equals("select platform", true)) {
-                return@setOnClickListener
-            }
-            if (OSInstalled.text.toString().isEmpty()) {
-                OSInstalled.error = "Please enter OS Installed"
-                OSInstalled.requestFocus()
-                return@setOnClickListener
-            }
-            if (editTextDate.text.toString().isEmpty()) {
-                editTextDate.error = "Please enter date"
-                editTextDate.requestFocus()
-                return@setOnClickListener
-            }
+            val isConnected = isAvailableNetwork(this)
+            if (isConnected) {
+                if (deviceName.text.toString().isEmpty()) {
+                    deviceName.error = "Please enter device name"
+                    deviceName.requestFocus()
+                    return@setOnClickListener
+                }
+                if (platformSelected.isEmpty() || platformSelected.equals(
+                        "select platform",
+                        true
+                    )
+                ) {
+                    return@setOnClickListener
+                }
+                if (OSInstalled.text.toString().isEmpty()) {
+                    OSInstalled.error = "Please enter OS Installed"
+                    OSInstalled.requestFocus()
+                    return@setOnClickListener
+                }
+                if (editTextDate.text.toString().isEmpty()) {
+                    editTextDate.error = "Please enter date"
+                    editTextDate.requestFocus()
+                    return@setOnClickListener
+                }
 
-            progressDialog.show()
-            var deviceDetails: HashMap<String, String> = hashMapOf("deviceName" to deviceName.text.toString(),
-                "platform" to platformSelected, "OS" to OSInstalled.text.toString(), "date" to editTextDate.text.toString(),
-                "AssignedDate" to "", "AssignedTo" to "")
-            var ref = FirebaseDatabase.getInstance().getReference("device/"+platformSelected)
+                progressDialog.show()
+                var deviceDetails: HashMap<String, String> = hashMapOf(
+                    "deviceName" to deviceName.text.toString(),
+                    "platform" to platformSelected,
+                    "OS" to OSInstalled.text.toString(),
+                    "date" to editTextDate.text.toString(),
+                    "AssignedDate" to "",
+                    "AssignedTo" to ""
+                )
+                var ref = FirebaseDatabase.getInstance().getReference("device/" + platformSelected)
 
-            var deviceId = ref.push().key.toString()
-            ref.child(deviceId).setValue(deviceDetails).addOnCompleteListener {
+                var deviceId = ref.push().key.toString()
+                ref.child(deviceId).setValue(deviceDetails).addOnCompleteListener {
 
-                progressDialog.dismiss()
-                startActivity(Intent(this, ActivityAllDeviceListView::class.java))
-               // finish()
+                    progressDialog.dismiss()
+                    startActivity(Intent(this, ActivityAllDeviceListView::class.java))
+                    // finish()
+                }
+            }else{
+                showAlert("No internet connection, Please try again")
             }
-
         }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -130,5 +149,28 @@ class AddNewDeviceActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+    fun isAvailableNetwork(context: Context): Boolean {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val n = cm.activeNetwork
+            if (n != null) {
+                val nc = cm.getNetworkCapabilities(n)
+                //It will check for both wifi and cellular network
+                return nc!!.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || nc.hasTransport(
+                    NetworkCapabilities.TRANSPORT_WIFI)
+            }
+            return false
+        } else {
+            val netInfo = cm.activeNetworkInfo
+            return netInfo != null && netInfo.isConnectedOrConnecting
+        }
+    }
+    fun showAlert(message: String){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(message)
+        builder.setNegativeButton("Close", DialogInterface.OnClickListener { dialogInterface, i ->  })
+        builder.show()
     }
 }

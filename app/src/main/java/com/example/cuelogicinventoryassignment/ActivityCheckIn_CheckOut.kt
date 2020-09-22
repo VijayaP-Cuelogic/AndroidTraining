@@ -3,11 +3,16 @@ package com.example.cuelogicinventoryassignment
 import android.app.ProgressDialog
 import android.graphics.Color
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_add_new_device.*
@@ -112,36 +117,44 @@ class ActivityCheckIn_CheckOut : AppCompatActivity() {
         }
     }
         buttonCheckIn_CheckOut.setOnClickListener {
+            val isConnected = isAvailableNetwork(this)
+            if (isConnected){
             progressDialog.show()
-            ref = FirebaseDatabase.getInstance().getReference("device/"+platform)
+            ref = FirebaseDatabase.getInstance().getReference("device/" + platform)
             var currentUser = auth.currentUser
-            var deviceDetails: HashMap<String, String> = hashMapOf("deviceName" to deviceNameVar,
+            var deviceDetails: HashMap<String, String> = hashMapOf(
+                "deviceName" to deviceNameVar,
                 "platform" to platform, "OS" to osInstalled, "date" to dateAdded,
-                "AssignedDate" to date, "AssignedTo" to userName)
+                "AssignedDate" to date, "AssignedTo" to userName
+            )
 
             // var deviceId = ref.push().key
             if (buttonCheckIn_CheckOut.text.toString() == "CheckOut") {
-                deviceDetails = hashMapOf("deviceName" to deviceNameVar,
-                "platform" to platform, "OS" to osInstalled, "date" to dateAdded)
+                deviceDetails = hashMapOf(
+                    "deviceName" to deviceNameVar,
+                    "platform" to platform, "OS" to osInstalled, "date" to dateAdded
+                )
             }
             ref.child(key).setValue(deviceDetails)
-                val path = "users/employee/"+userID+"/device/"+platform
-                ref = FirebaseDatabase.getInstance().getReference(path)
-                if (buttonCheckIn_CheckOut.text.toString() == "CheckOut") {
-                    ref.child(key).removeValue().addOnCompleteListener {
-                        progressDialog.dismiss()
-                        startActivity(Intent(this, DashboardActivity::class.java))
-                        finish()
-                    }
-                }else {
+            val path = "users/employee/" + userID + "/device/" + platform
+            ref = FirebaseDatabase.getInstance().getReference(path)
+            if (buttonCheckIn_CheckOut.text.toString() == "CheckOut") {
+                ref.child(key).removeValue().addOnCompleteListener {
                     progressDialog.dismiss()
-                    ref.child(key).setValue(deviceNameVar).addOnCompleteListener {
-                        startActivity(Intent(this, DashboardActivity::class.java))
-                        finish()
-                    }
+                    startActivity(Intent(this, DashboardActivity::class.java))
+                    finish()
                 }
+            } else {
+                progressDialog.dismiss()
+                ref.child(key).setValue(deviceNameVar).addOnCompleteListener {
+                    startActivity(Intent(this, DashboardActivity::class.java))
+                    finish()
+                }
+            }
 
-
+        }else{
+                showAlert("No internet connection, Please try again")
+            }
         }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -152,5 +165,28 @@ class ActivityCheckIn_CheckOut : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+    fun isAvailableNetwork(context: Context): Boolean {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val n = cm.activeNetwork
+            if (n != null) {
+                val nc = cm.getNetworkCapabilities(n)
+                //It will check for both wifi and cellular network
+                return nc!!.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || nc.hasTransport(
+                    NetworkCapabilities.TRANSPORT_WIFI)
+            }
+            return false
+        } else {
+            val netInfo = cm.activeNetworkInfo
+            return netInfo != null && netInfo.isConnectedOrConnecting
+        }
+    }
+    fun showAlert(message: String){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(message)
+        builder.setNegativeButton("Close", DialogInterface.OnClickListener { dialogInterface, i ->  })
+        builder.show()
     }
 }

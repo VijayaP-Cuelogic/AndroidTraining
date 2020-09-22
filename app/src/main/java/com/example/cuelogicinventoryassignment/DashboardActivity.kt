@@ -52,7 +52,7 @@ class DashboardActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {
             android.R.id.home -> {
-                onBackPressed()
+              //  onBackPressed()
                 return false
             }
         }

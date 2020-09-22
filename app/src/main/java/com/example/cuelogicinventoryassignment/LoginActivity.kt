@@ -6,6 +6,9 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.icu.text.CaseMap
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.os.Message
 import android.util.Log
@@ -74,38 +77,51 @@ class LoginActivity : AppCompatActivity() {
         }
         buttonforgotPassword.setOnClickListener{
 
-            val builder = Builder(this)
-            builder.setTitle("Forgot Password")
-            val view = layoutInflater.inflate(R.layout.dialog_forgot_password, null)
-            builder.setView(view)
-            val userName = view.findViewById<EditText?>(R.id.editText_userName)
+            val isConnected = isAvailableNetwork(this)
+            if (isConnected) {
+                val builder = Builder(this)
+                builder.setTitle("Forgot Password")
+                val view = layoutInflater.inflate(R.layout.dialog_forgot_password, null)
+                builder.setView(view)
+                val userName = view.findViewById<EditText?>(R.id.editText_userName)
 
-            builder.setNegativeButton("Close", DialogInterface.OnClickListener { dialogInterface, i ->  })
-            builder.setPositiveButton("Reset", DialogInterface.OnClickListener { dialogInterface, i ->
-                if (userName != null) {
-                    if (userName.text.isNotEmpty()) {
-                        var email = userName?.text.toString()
-                        auth.sendPasswordResetEmail(email)
-                            .addOnCompleteListener { task ->
-                                if (task.isSuccessful) {
-                                    Log.w(TAG, "Password link sent to this email id")
-                                    showAlert("Reset Password link sent to email id")
+                builder.setNegativeButton(
+                    "Close",
+                    DialogInterface.OnClickListener { dialogInterface, i -> })
+                builder.setPositiveButton(
+                    "Reset",
+                    DialogInterface.OnClickListener { dialogInterface, i ->
+                        if (userName != null) {
+                            if (userName.text.isNotEmpty()) {
+                                var email = userName?.text.toString()
+                                auth.sendPasswordResetEmail(email)
+                                    .addOnCompleteListener { task ->
+                                        if (task.isSuccessful) {
+                                            Log.w(TAG, "Password link sent to this email id")
+                                            showAlert("Reset Password link sent to email id")
 
-                                } else {
-                                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+                                        } else {
+                                            Log.w(TAG, "signInWithEmail:failure", task.exception)
 
-                                    var message = task.exception!!.message.toString()
-                                    showAlert(message)
+                                            var message = task.exception!!.message.toString()
+                                            showAlert(message)
 
-                                }
+                                        }
+                                    }
                             }
-                    }
-                }
-            })
-            builder.show()
+                        }
+                    })
+                builder.show()
+            }else
+                showAlert("No internet connection, please try again")
         }
         buttonSignIn.setOnClickListener {
-            signIn()
+            val isConnected = isAvailableNetwork(this)
+            if (isConnected) {
+                signIn()
+            }else{
+                showAlert("No internet connection,please try again")
+            }
         }
     }
 
@@ -231,5 +247,21 @@ class LoginActivity : AppCompatActivity() {
         builder.setTitle(message)
         builder.setNegativeButton("Close", DialogInterface.OnClickListener { dialogInterface, i ->  })
         builder.show()
+    }
+    fun isAvailableNetwork(context: Context): Boolean {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val n = cm.activeNetwork
+            if (n != null) {
+                val nc = cm.getNetworkCapabilities(n)
+                //It will check for both wifi and cellular network
+                return nc!!.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || nc.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+            }
+            return false
+        } else {
+            val netInfo = cm.activeNetworkInfo
+            return netInfo != null && netInfo.isConnectedOrConnecting
+        }
     }
 }
