@@ -16,5 +16,13 @@
     <string name="title_activity_add_new_device">Add New Device</string>
     <string name="title_activity_device_details">Device Details</string>
     <string name="title_activity_forgot_password">ActivityForgotPassword</string>
+    <string name="selected_item">Selected item:</string>
+
+    <string-array name="platform">
+        <item>select platform</item>
+        <item>Android</item>
+        <item>iOS</item>
+    </string-array>
+
 
 </resources>

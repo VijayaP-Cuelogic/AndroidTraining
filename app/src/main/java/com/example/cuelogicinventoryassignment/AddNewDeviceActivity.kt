@@ -7,6 +7,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_add_new_device.*
@@ -16,13 +21,50 @@ import javax.xml.datatype.DatatypeConstants.MONTHS
 
 class AddNewDeviceActivity : AppCompatActivity() {
 
+    lateinit var platformSelected : String
     @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_new_device)
 
         getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
-        buttonSelectDate.setOnClickListener{
+        val platforms = resources.getStringArray(R.array.platform)
+
+        platformSelected = "select platform"
+        // access the spinner
+        val spinner = findViewById<Spinner>(R.id.spinner)
+        if (spinner != null) {
+            val adapter = ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, platforms)
+            spinner.adapter = adapter
+
+            spinner.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>,
+                                            view: View, position: Int, id: Long) {
+//                    Toast.makeText(this,
+//                        getString(R.string.selected_item) + " " +
+//                                "" + languages[position], Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext,
+                        "selected platform",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    platformSelected = platforms[position]
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // write code to perform some action
+                    Toast.makeText(
+                        baseContext,
+                        "nothing selected",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                }
+            }
+        }
+    buttonSelectDate.setOnClickListener{
             val c = Calendar.getInstance()
             val year = c.get(Calendar.YEAR)
             val month = c.get(Calendar.MONTH)
@@ -45,9 +87,7 @@ class AddNewDeviceActivity : AppCompatActivity() {
                 deviceName.requestFocus()
                 return@setOnClickListener
             }
-            if (EditTextPlatform.text.toString().isEmpty()) {
-                EditTextPlatform.error = "Please enter platform"
-                EditTextPlatform.requestFocus()
+            if (platformSelected.isEmpty() || platformSelected.equals("select platform", true)) {
                 return@setOnClickListener
             }
             if (OSInstalled.text.toString().isEmpty()) {
@@ -62,11 +102,14 @@ class AddNewDeviceActivity : AppCompatActivity() {
             }
             var device = Device(
                 deviceName.text.toString(),
-                EditTextPlatform.text.toString(),
+                platformSelected,
+                //EditTextPlatform.text.toString(),
                 OSInstalled.text.toString(),
-                editTextDate.text.toString()
+                editTextDate.text.toString(),
+                "",
+                ""
             )
-            var ref = FirebaseDatabase.getInstance().getReference("device/Android")
+            var ref = FirebaseDatabase.getInstance().getReference("device/"+platformSelected)
 
             var deviceId = ref.push().key
             ref.child(deviceId!!).setValue(device).addOnCompleteListener {

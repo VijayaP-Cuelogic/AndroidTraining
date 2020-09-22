@@ -26,16 +26,30 @@
         android:inputType="textPersonName"
         android:hint="Device Name" />
 
-    <EditText
-        android:id="@+id/EditTextPlatform"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_Top"
-        android:paddingRight="@dimen/padding_right"
-        android:paddingLeft="@dimen/padding_left"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Platform" />
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+<!--        <EditText-->
+<!--            android:id="@+id/EditTextPlatform"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/margin_Top"-->
+<!--            android:paddingRight="@dimen/padding_right"-->
+<!--            android:paddingLeft="@dimen/padding_left"-->
+<!--            android:ems="10"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:hint="Select Platform" />-->
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:paddingLeft="5dp"
+            android:paddingRight="@dimen/padding_right"
+            android:layout_marginTop="@dimen/margin_Top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/EditTextPlatform"/>
+<!--    </LinearLayout>-->
 
     <EditText
         android:id="@+id/OSInstalled"
@@ -55,7 +69,7 @@
 
         <EditText
             android:id="@+id/editTextDate"
-            android:layout_width="300dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_Top"
             android:paddingEnd="@dimen/padding_right"

@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_ios_device_list.*
  */
 class iOSDeviceListFragment : Fragment() {
 
+    private lateinit var user_type: String
     lateinit var deviceList: MutableList<Device>
     lateinit var ref : DatabaseReference
     lateinit var listView: ListView
@@ -39,13 +40,15 @@ class iOSDeviceListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val sharedPreference =  this.getActivity()!!.getSharedPreferences("kotlinsharedpreference", Context.MODE_PRIVATE)
+        user_type = sharedPreference.getString("user_type","").toString()
+
         val progressBar = ProgressBar(this.context)
         //setting height and width of progressBar
         progressBar.layoutParams = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
             )
-
 
         val view = inflater.inflate(R.layout.fragment_ios_device_list, container, false);
         listView  = view.findViewById<ListView>(R.id.iOSDeviceList)
@@ -77,10 +80,17 @@ class iOSDeviceListFragment : Fragment() {
                // layout?.removeAllViews()
                 listView.setOnItemClickListener { parent, view, position, id ->
                     val element = adapter.getItem(position)
-                    val intent = Intent (activity, ActivityCheckIn_CheckOut::class.java)
-                    intent.putExtra("key", element!!.deviceKey.toString())
-                    intent.putExtra("platform", "iOS")
-                    startActivity(intent)
+                    if (user_type.equals("employee")) {
+                        val intent = Intent(activity, ActivityCheckIn_CheckOut::class.java)
+                        intent.putExtra("key", element!!.deviceKey.toString())
+                      //  intent.putExtra("platform", element!!.platform)
+                        startActivity(intent)
+                    }else{
+                        val intent = Intent(activity, ActivityDeviceDetails::class.java)
+                        intent.putExtra("key", element!!.deviceKey.toString())
+                      //  intent.putExtra("platform", element!!.platform))
+                        startActivity(intent)
+                    }
                 }
             }
         })
