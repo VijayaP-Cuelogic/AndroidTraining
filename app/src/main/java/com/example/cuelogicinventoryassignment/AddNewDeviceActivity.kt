@@ -2,6 +2,7 @@ package com.example.cuelogicinventoryassignment
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.app.ProgressDialog
 import android.bluetooth.BluetoothClass
 import android.content.Intent
 import android.os.Bundle
@@ -26,6 +27,10 @@ class AddNewDeviceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_new_device)
+
+        val progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Add Device")
+        progressDialog.setMessage("Adding device to inventory, please wait")
 
         getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
         val platforms = resources.getStringArray(R.array.platform)
@@ -100,21 +105,18 @@ class AddNewDeviceActivity : AppCompatActivity() {
                 editTextDate.requestFocus()
                 return@setOnClickListener
             }
-            var device = Device(
-                deviceName.text.toString(),
-                platformSelected,
-                //EditTextPlatform.text.toString(),
-                OSInstalled.text.toString(),
-                editTextDate.text.toString(),
-                "",
-                ""
-            )
+
+            progressDialog.show()
+            var deviceDetails: HashMap<String, String> = hashMapOf("deviceName" to deviceName.text.toString(),
+                "platform" to platformSelected, "OS" to OSInstalled.text.toString(), "date" to editTextDate.text.toString(),
+                "AssignedDate" to "", "AssignedTo" to "")
             var ref = FirebaseDatabase.getInstance().getReference("device/"+platformSelected)
 
-            var deviceId = ref.push().key
-            ref.child(deviceId!!).setValue(device).addOnCompleteListener {
+            var deviceId = ref.push().key.toString()
+            ref.child(deviceId).setValue(deviceDetails).addOnCompleteListener {
 
-                startActivity(Intent(this, DashboardActivity::class.java))
+                progressDialog.dismiss()
+                startActivity(Intent(this, ActivityAllDeviceListView::class.java))
                // finish()
             }
 

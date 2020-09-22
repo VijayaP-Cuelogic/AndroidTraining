@@ -9,38 +9,35 @@
         android:roundIcon="@mipmap/app_iconnew_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityCheckIn_CheckOut"
+        <activity android:name=".ActivityUpdateDevice"></activity>
+        <activity
+            android:name=".ActivityCheckIn_CheckOut"
             android:label="@string/title_activity_device_details"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ActivityDeviceDetails"
             android:label="@string/title_activity_device_details"
-
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".AddNewDeviceActivity"
             android:label="@string/title_activity_add_new_device"
-
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ActivitySendEmail"
             android:label="Cuelogic Inventory"
-
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ActivityAllDeviceListView"
             android:label="@string/title_activity_all_device_list_view"
-
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".EmployeeDeviceListActivity"
             android:label="@string/title_activity_employee_device_list"
-
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
