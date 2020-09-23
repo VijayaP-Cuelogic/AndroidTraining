@@ -9,18 +9,18 @@ import android.widget.ImageView
 import android.widget.TextView
 
 class MyAdapter(var mCtx:Context, var resources:Int, var items:List<Device>):ArrayAdapter<Device>(mCtx,resources, items){
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val layoutInflater:LayoutInflater = LayoutInflater.from(mCtx)
-        val  view:View = layoutInflater.inflate(resources, null)
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+            val layoutInflater:LayoutInflater = LayoutInflater.from(mCtx)
+            val  view:View = layoutInflater.inflate(resources, null)
 
-        val imageView:ImageView = view.findViewById(R.id.imageV)
-        val title:TextView = view.findViewById(R.id.textName)
-        val description:TextView = view.findViewById(R.id.textDescriptin)
+            val imageView:ImageView = view.findViewById(R.id.imageV)
+            val title:TextView = view.findViewById(R.id.textName)
+            val description:TextView = view.findViewById(R.id.textDescriptin)
 
-        var mItem:Device = items[position]
-        imageView.setImageDrawable(mCtx.resources.getDrawable(R.drawable.ic_launcher_foreground))
+        var mItem: Device = items[position]
+       // imageView.setImageDrawable(mCtx.resources.getDrawable(R.drawable.ic_launcher_foreground))
         title.text = mItem.deviceName
-        description.text = mItem.platform
+        description.text = mItem.date
         return view
     }
 }

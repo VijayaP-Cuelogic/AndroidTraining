@@ -2,7 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/titleDeviceDetails"
@@ -78,45 +79,17 @@
         android:textSize="@dimen/Devic_Name_text"
         android:text="Assigned Date" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/buttonCheckIn_CheckOut"
+        android:layout_width="@dimen/buttonUpdate_remove"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/padding_left"
         android:layout_marginTop="@dimen/margin_Top"
-        android:gravity="center">
+        android:background="@color/colorPrimary"
+        android:textAllCaps="false"
+        android:text="CheckIn"
+        android:textColor="@color/textColorWhite"
+        android:textSize="@dimen/button_title_textsize" />
 
-<!--        <Button-->
-<!--            android:id="@+id/buttonUpdate"-->
-<!--            android:layout_width="@dimen/buttonUpdate_remove"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_horizontal"-->
-<!--            android:layout_marginLeft="@dimen/padding_left"-->
-<!--            android:layout_marginTop="@dimen/margin_Top"-->
-<!--            android:background="@color/colorPrimary"-->
-<!--            android:text="Update"-->
-<!--            android:textColor="@color/textColorWhite"-->
-<!--            android:textSize="@dimen/button_title_textsize" />-->
-
-        <Button
-            android:id="@+id/buttonRemove"
-            android:layout_width="@dimen/buttonUpdate_remove"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="@dimen/padding_left"
-            android:layout_marginTop="@dimen/margin_Top"
-            android:background="@color/colorPrimary"
-            android:text="Remove"
-            android:textColor="@color/textColorWhite"
-            android:textSize="@dimen/button_title_textsize" />
-        <Button
-            android:id="@+id/buttonUpdate"
-            android:layout_width="@dimen/buttonUpdate_remove"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="@dimen/padding_left"
-            android:layout_marginTop="@dimen/margin_Top"
-            android:background="@color/colorPrimary"
-            android:text="Update"
-            android:textColor="@color/textColorWhite"
-            android:textSize="@dimen/button_title_textsize" />
-    </LinearLayout>
 </LinearLayout>

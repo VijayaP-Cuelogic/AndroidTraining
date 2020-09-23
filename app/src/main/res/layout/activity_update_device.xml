@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/titleDeviceDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_Top_Title"
+        android:text="UPDATE DEVICE DETAILS"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/subtitle_textsize" />
+
+    <EditText
+        android:id="@+id/EditTextdeviceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_Top"
+        android:paddingLeft="@dimen/padding_left"
+        android:paddingRight="@dimen/padding_right"
+        android:inputType="textPersonName"
+        android:textSize="@dimen/Devic_Name_text"
+        android:hint="Device Name" />
+
+    <EditText
+        android:id="@+id/editTextPlatform"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_Top"
+        android:paddingRight="@dimen/padding_right"
+        android:paddingLeft="@dimen/padding_left"
+        android:textSize="@dimen/Devic_Name_text"
+        android:inputType="textPersonName"
+        android:hint="Platform" />
+
+    <EditText
+        android:id="@+id/EditTextOSInstalled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_Top"
+        android:paddingLeft="@dimen/padding_left"
+        android:paddingRight="@dimen/padding_right"
+        android:inputType="textPersonName"
+        android:textSize="@dimen/Devic_Name_text"
+        android:hint="OS Installed" />
+
+    <EditText
+        android:id="@+id/editTextDateAdded"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_Top"
+        android:paddingEnd="@dimen/padding_right"
+        android:paddingStart="@dimen/padding_left"
+        android:textSize="@dimen/Devic_Name_text"
+        android:hint="Entry Date"/>
+
+    <Button
+        android:id="@+id/buttonUpdateDevice"
+        android:layout_width="@dimen/buttonUpdate_remove"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/padding_left"
+        android:layout_marginTop="@dimen/margin_Top"
+        android:background="@color/colorPrimary"
+        android:textAllCaps="false"
+        android:text="Update"
+        android:textColor="@color/textColorWhite"
+        android:textSize="@dimen/button_title_textsize" />
+
+</LinearLayout>

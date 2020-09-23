@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="box_inset_layout_padding">0dp</dimen>
-    <dimen name="inner_frame_layout_padding">5dp</dimen>
+    <dimen name="inner_frame_layout_padding">2dp</dimen>
     <dimen name="padding_left">10dp</dimen>
     <dimen name="padding_right">10dp</dimen>
     <dimen name="padding_top">10dp</dimen>
@@ -12,10 +12,12 @@
     <dimen name="subtitle_textsize">25sp</dimen>
     <dimen name="margin_Top_Title">40dp</dimen>
     <dimen name="button_title_textsize">18sp</dimen>
-    <dimen name="imageView_width">70dp</dimen>
+    <dimen name="imageView_width">50dp</dimen>
     <dimen name="imageView_height">70dp</dimen>
     <dimen name="Devic_Name_text">20sp</dimen>
     <dimen name="description_text">18sp</dimen>
+    <dimen name="imageNext_height">50dp</dimen>
+    <dimen name="imageNext_width">30dp</dimen>
     <dimen name="buttonUpdate_remove">150dp</dimen>
 
 </resources>

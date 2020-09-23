@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CuelogicInventory</string>
+    <string name="app_name">Cuelogic Inventory</string>
     <string name="password">Password</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="my_devices">My Devices</string>
@@ -8,20 +8,21 @@
     <string name="signup">SignUp</string>
     <string name="already_have_an_acoount">Already have an Acoount?</string>
     <string name="sign_in">Sign In</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_dashboard">DashboardActivity</string>
-    <string name="title_activity_employee_device_list">EmployeeDeviceListActivity</string>
-    <string name="title_activity_all_device_list">AllDeviceListActivity</string>
-    <string name="title_activity_all_device_list_view">ActivityAllDeviceListView</string>
-    <string name="title_activity_add_new_device">AddNewDeviceActivity</string>
-    <string name="title_activity_device_details">ActivityDeviceDetails</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="title_activity_employee_device_list">EmployeeDeviceList</string>
+    <string name="title_activity_all_device_list">All Device List</string>
+    <string name="title_activity_all_device_list_view">AllDeviceListView</string>
+    <string name="title_activity_add_new_device">Add New Device</string>
+    <string name="title_activity_device_details">Device Details</string>
     <string name="title_activity_forgot_password">ActivityForgotPassword</string>
+    <string name="selected_item">Selected item:</string>
+
+    <string-array name="platform">
+        <item>select platform</item>
+        <item>Android</item>
+        <item>iOS</item>
+    </string-array>
+
 
 </resources>
