@@ -135,10 +135,16 @@ class LoginActivity : AppCompatActivity() {
             if (currentUser.isEmailVerified) {
 
                 if (user_type.equals("admin")) {
-                    startActivity(Intent(this, ActivityAllDeviceListView::class.java))
+                    val intent = Intent(this@LoginActivity,ActivityAllDeviceListView::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    intent.putExtra("Exit",true)
+                    startActivity(intent)
                     finish()
                 }else{
-                    startActivity(Intent(this, DashboardActivity::class.java))
+                    val intent = Intent(this@LoginActivity,DashboardActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    intent.putExtra("Exit",true)
+                    startActivity(intent)
                     finish()
                 }
             }else
