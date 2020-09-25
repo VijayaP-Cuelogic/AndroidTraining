@@ -111,7 +111,10 @@ class ActivityUpdateDevice : AppCompatActivity() {
 
                 ref.child(key).setValue(deviceDetails).addOnCompleteListener {
                     progressDialog.dismiss()
-                    startActivity(Intent(this, ActivityAllDeviceListView::class.java))
+                    val intent = Intent(this@ActivityUpdateDevice,ActivityAllDeviceListView::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    intent.putExtra("Exit",true)
+                    startActivity(intent)
                     finish()
                 }
             }else

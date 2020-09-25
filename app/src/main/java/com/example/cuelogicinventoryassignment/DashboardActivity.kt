@@ -3,13 +3,18 @@ package com.example.cuelogicinventoryassignment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.MenuItem
-import androidx.appcompat.app.ActionBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.HandlerCompat.postDelayed
+import com.google.firebase.database.Transaction
 import kotlinx.android.synthetic.main.activity_dashboard.*
+
 
 class DashboardActivity : AppCompatActivity() {
 
+    var doubleBackToExitPressedOnce = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
@@ -17,10 +22,10 @@ class DashboardActivity : AppCompatActivity() {
 
         val sharedPreference =  getSharedPreferences("kotlinsharedpreference", Context.MODE_PRIVATE)
         var editor = sharedPreference.edit()
-        editor.putString("isComingFrom","MyDevice")
+        editor.putString("isComingFrom", "MyDevice")
         editor.commit()
         btnMyDevice.setOnClickListener{
-            editor.putString("isComingFrom","MyDevice")
+            editor.putString("isComingFrom", "MyDevice")
             editor.apply()
             editor.commit()
             val intent = Intent(this, EmployeeDeviceListActivity::class.java)
@@ -30,7 +35,7 @@ class DashboardActivity : AppCompatActivity() {
         btnAllDevice.setOnClickListener{
             val intent = Intent(this, ActivityAllDeviceListView::class.java)
           //  intent.putExtra("isComingFrom", "AllDevice")
-            editor.putString("isComingFrom","AllDevice")
+            editor.putString("isComingFrom", "AllDevice")
             editor.apply()
             editor.commit()
             startActivity(intent)
@@ -52,11 +57,16 @@ class DashboardActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {
             android.R.id.home -> {
-              //  onBackPressed()
+                onBackPressed()
                 return false
             }
         }
         return false
+    }
+
+    override fun onBackPressed() {
+       // super.onBackPressed()
+       finish()
     }
 
 }

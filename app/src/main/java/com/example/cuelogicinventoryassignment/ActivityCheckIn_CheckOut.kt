@@ -141,13 +141,19 @@ class ActivityCheckIn_CheckOut : AppCompatActivity() {
             if (buttonCheckIn_CheckOut.text.toString() == "CheckOut") {
                 ref.child(key).removeValue().addOnCompleteListener {
                     progressDialog.dismiss()
-                    startActivity(Intent(this, DashboardActivity::class.java))
+                    val intent = Intent(this@ActivityCheckIn_CheckOut,DashboardActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    intent.putExtra("Exit",true)
+                    startActivity(intent)
                     finish()
                 }
             } else {
                 progressDialog.dismiss()
                 ref.child(key).setValue(deviceNameVar).addOnCompleteListener {
-                    startActivity(Intent(this, DashboardActivity::class.java))
+                    val intent = Intent(this@ActivityCheckIn_CheckOut,DashboardActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    intent.putExtra("Exit",true)
+                    startActivity(intent)
                     finish()
                 }
             }

@@ -47,10 +47,18 @@ class ActivityAllDeviceListView : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {
             android.R.id.home -> {
-              //  onBackPressed()
+                onBackPressed()
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        if (user_type.equals("admin",true)){
+        finish()
+        }else{
+            super.onBackPressed()
+        }
     }
 }
