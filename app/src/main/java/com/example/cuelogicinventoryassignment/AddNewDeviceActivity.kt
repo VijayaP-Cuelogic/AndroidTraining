@@ -53,25 +53,11 @@ class AddNewDeviceActivity : AppCompatActivity() {
                 AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View, position: Int, id: Long) {
-//                    Toast.makeText(this,
-//                        getString(R.string.selected_item) + " " +
-//                                "" + languages[position], Toast.LENGTH_SHORT).show()
-                    Toast.makeText(
-                        baseContext,
-                        "selected platform",
-                        Toast.LENGTH_SHORT
-                    ).show()
                     platformSelected = platforms[position]
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
                     // write code to perform some action
-                    Toast.makeText(
-                        baseContext,
-                        "nothing selected",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
                 }
             }
         }

@@ -1,14 +1,13 @@
-package com.example.cuelogicinventoryassignment
+package ui.home
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.HandlerCompat.postDelayed
-import com.google.firebase.database.Transaction
+import com.example.cuelogicinventoryassignment.ActivityAllDeviceListView
+import com.example.cuelogicinventoryassignment.EmployeeDeviceListActivity
+import com.example.cuelogicinventoryassignment.R
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 

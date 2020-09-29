@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_Top_Title"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            android:textSize="@dimen/subtitle_textsize"
+            android:text="Sign In" />
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_Top"
+            android:paddingLeft="@dimen/padding_left"
+            android:paddingRight="@dimen/padding_right"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Enter Email ID" />
+
+        <EditText
+            android:id="@+id/editTextEnterPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_Top"
+            android:paddingRight="@dimen/padding_right"
+            android:paddingLeft="@dimen/padding_left"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Password" />
+
+        <Button
+            android:id="@+id/buttonforgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_Top"
+            android:text="Forgot Password?"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/buttonSignIn"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary"
+            android:text="Sign In"
+            android:textSize="@dimen/button_title_textsize"
+            android:textColor="@color/textColorWhite" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:gravity="bottom">
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/margin_Top"
+            android:text="Does not have Acoount?"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary"
+            android:text="Sign Up"
+            android:textSize="@dimen/button_title_textsize"
+            android:textColor="@color/textColorWhite" />
+    </LinearLayout>
+
+</RelativeLayout>

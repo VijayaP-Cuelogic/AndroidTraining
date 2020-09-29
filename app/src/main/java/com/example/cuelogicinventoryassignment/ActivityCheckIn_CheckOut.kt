@@ -50,7 +50,7 @@ class ActivityCheckIn_CheckOut : AppCompatActivity() {
         progressDialog.setTitle("Checkin Device")
         progressDialog.setMessage("Checking in device, please wait")
 
-        val simpleDateFormat = SimpleDateFormat("yyyy.MM.dd")
+        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
         date = simpleDateFormat.format(Date()).toString()
         val sharedPreference = getSharedPreferences("kotlinsharedpreference", Context.MODE_PRIVATE)
         userName = sharedPreference.getString("user_name", "").toString()
