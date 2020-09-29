@@ -1,31 +1,26 @@
-package com.example.cuelogicinventoryassignment
+package ui.auth
 
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.SharedPreferences
-import android.icu.text.CaseMap
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
-import android.os.Message
 import android.util.Log
 import android.util.Patterns
-import android.view.LayoutInflater
 import android.view.MenuItem
 import android.widget.EditText
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AlertDialog.Builder
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cuelogicinventoryassignment.ActivityAllDeviceListView
+import ui.home.DashboardActivity
+import com.example.cuelogicinventoryassignment.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_device_details.*
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -135,13 +130,13 @@ class LoginActivity : AppCompatActivity() {
             if (currentUser.isEmailVerified) {
 
                 if (user_type.equals("admin")) {
-                    val intent = Intent(this@LoginActivity,ActivityAllDeviceListView::class.java)
+                    val intent = Intent(this@LoginActivity, ActivityAllDeviceListView::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     intent.putExtra("Exit",true)
                     startActivity(intent)
                     finish()
                 }else{
-                    val intent = Intent(this@LoginActivity,DashboardActivity::class.java)
+                    val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     intent.putExtra("Exit",true)
                     startActivity(intent)
